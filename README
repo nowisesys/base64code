@@ -27,8 +27,10 @@
    I don't have any use of it.
    
    The library has been verified to produce the same result as other commonly 
-   used implementations, among them the base64_encode() and base64_decode() 
-   functions in PHP.
+   used implementations, among them:
+   
+     *) The base64_encode() and base64_decode() functions in PHP.
+     *) The base64 command from GNU coreutils.
 
 ** LICENSE:
 
