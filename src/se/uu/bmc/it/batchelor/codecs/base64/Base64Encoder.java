@@ -51,8 +51,8 @@ import java.io.IOException;
  * dynamic before or in between calls to encode().</p>
  * 
  * <p>This implementation is based on information from <a href="http://en.wikipedia.org/wiki/Base64">http://en.wikipedia.org/wiki/Base64</a>
- * and verified against other Base64 implementations like the base64(1) command
- * from the GNU coreutils package.</p>
+ * and RFC 2045 (section 6.8). It has verified against other Base64 implementations
+ * like the base64(1) command from the GNU coreutils package.</p>
  *
  * @author Anders Lövgren (QNET/BMC CompDept)
  */
