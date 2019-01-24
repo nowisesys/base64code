@@ -28,7 +28,7 @@
  * Created: Apr 27, 2009, 11:51:12 PM
  * Author:  Anders Lövgren (QNET/BMC CompDept)
  */
-package se.uu.bmc.it.codecs.base64;
+package se.nowise.codecs.base64;
 
 import java.io.InputStream;
 import java.io.IOException;

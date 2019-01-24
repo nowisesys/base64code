@@ -21,8 +21,7 @@
  * 
  * For more info: http://it.bmc.uu.se/andlov/proj/batchelor/
  */
-
-package se.uu.bmc.it.codecs.base64;
+package se.nowise.codecs.base64;
 
 import java.io.ByteArrayInputStream;
 import org.junit.After;
@@ -32,20 +31,20 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import se.uu.bmc.it.codecs.base64.Base64Encoder;
+import se.nowise.codecs.base64.Base64Decoder;
 
 /**
  *
  * @author Anders Lövgren (QNET/BMC CompDept)
  */
-public class Base64EncoderTest {
+public class Base64DecoderTest {
 
-    Base64Encoder encoder;
+    Base64Decoder decoder;
     final static String decoded = "Hello, world!";
     final static String encoded = "SGVsbG8sIHdvcmxkIQ==";
 
-    public Base64EncoderTest() {
-        encoder = new Base64Encoder();
+    public Base64DecoderTest() {
+        decoder = new Base64Decoder();
     }
 
     @BeforeClass
@@ -69,92 +68,91 @@ public class Base64EncoderTest {
      */
     @Test
     public void testEncode_Constructors() {
-        System.out.println("** Base64EncoderTest -> Contructors");
-        Base64Encoder obj = new Base64Encoder();
-        assertEquals(Base64Encoder.BUFFER_SIZE, obj.getSize());
-        obj = new Base64Encoder(3600);
+        System.out.println("** Base64DecoderTest -> Contructors");
+        Base64Decoder obj = new Base64Decoder();
+        assertEquals(Base64Decoder.BUFFER_SIZE, obj.getSize());
+        obj = new Base64Decoder(3600);
         assertEquals(3600, obj.getSize());
     }
 
     /**
-     * Test of setSize method, of class Base64Encoder.
+     * Test of setSize method, of class Base64Decoder.
      */
     @Test
-    public void testEncode_SetSize() {
-        System.out.println("** Base64EncoderTest -> setSize(int)");
-        encoder.setSize(3600);
-        assertEquals(3600, encoder.getSize());
+    public void testSetSize() {
+        System.out.println("** Base64DecoderTest -> setSize(int)");
+        decoder.setSize(3600);
+        assertEquals(3600, decoder.getSize());
     }
 
     /**
-     * Test of getSize method, of class Base64Encoder.
+     * Test of getSize method, of class Base64Decoder.
      */
     @Test
     public void testGetSize() {
-        System.out.println("** Base64EncoderTest -> getSize()");
-        assertEquals(encoder.getSize(), Base64Encoder.BUFFER_SIZE);
+        System.out.println("** Base64DecoderTest -> getSize()");
+        assertEquals(decoder.getSize(), Base64Decoder.BUFFER_SIZE);
     }
 
     /**
-     * Test of encode method, of class Base64Encoder.
+     * Test of decode method, of class Base64Decoder.
      */
     @Test
-    public void testEncode_String() {
-        System.out.println("** Base64EncoderTest -> encode(String)");
-        byte[] bytes = encoder.encode(decoded);
+    public void testDecode_String() {
+        System.out.println("** Base64DecoderTest -> decode(String)");
+        byte[] bytes = decoder.decode(encoded);
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, encoded);
+        assertEquals(result, decoded);
     }
 
     /**
-     * Test of encode method, of class Base64Encoder.
+     * Test of decode method, of class Base64Decoder.
      */
     @Test
-    public void testEncode_InputStream() throws Exception {
-        System.out.println("** Base64EncoderTest -> encode(InputStream)");
-        ByteArrayInputStream stream = new ByteArrayInputStream(decoded.getBytes());
-        byte[] bytes = encoder.encode(stream);
+    public void testDecode_InputStream() throws Exception {
+        System.out.println("** Base64DecoderTest -> decode(InputStream)");
+        ByteArrayInputStream stream = new ByteArrayInputStream(encoded.getBytes());
+        byte[] bytes = decoder.decode(stream);
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, encoded);
+        assertEquals(result, decoded);
     }
 
     /**
-     * Test of decode method, of class Base64Encoder.
+     * Test of decode method, of class Base64Decoder.
      */
     @Test
-    public void testEncode_InputStream_int() throws Exception {
-        System.out.println("** Base64EncoderTest -> encode(InputStream, int)");
-        ByteArrayInputStream stream = new ByteArrayInputStream(decoded.getBytes());
-        byte[] bytes = encoder.encode(stream, 512);
+    public void testDecode_InputStream_int() throws Exception {
+        System.out.println("** Base64DecoderTest -> decode(InputStream, int)");
+        ByteArrayInputStream stream = new ByteArrayInputStream(encoded.getBytes());
+        byte[] bytes = decoder.decode(stream, 512);
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, encoded);
+        assertEquals(result, decoded);
     }
 
     /**
-     * Test of encode method, of class Base64Encoder.
+     * Test of decode method, of class Base64Decoder.
      */
     @Test
-    public void testEncode_byteArr() {
-        System.out.println("** Base64EncoderTest -> encode(byte[])");
-        byte[] bytes = encoder.encode(decoded.getBytes());
+    public void testDecode_byteArr() {
+        System.out.println("** Base64DecoderTest -> decode(byte[])");
+        byte[] bytes = decoder.decode(encoded.getBytes());
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, encoded);
+        assertEquals(result, decoded);
     }
 
     /**
-     * Test of encode method, of class Base64Encoder.
+     * Test of decode method, of class Base64Decoder.
      */
     @Test
-    public void testEncode_charArr() {
-        System.out.println("** Base64EncoderTest -> encode(char[])");
-        byte[] bytes = encoder.encode(decoded.toCharArray());
+    public void testDecode_charArr() {
+        System.out.println("** Base64DecoderTest -> decode(char[])");
+        byte[] bytes = decoder.decode(encoded.toCharArray());
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, encoded);
+        assertEquals(result, decoded);
     }
-
 }
