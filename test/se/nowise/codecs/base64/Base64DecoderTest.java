@@ -106,6 +106,7 @@ public class Base64DecoderTest {
 
     /**
      * Test of decode method, of class Base64Decoder.
+     * @throws Exception
      */
     @Test
     public void testDecode_InputStream() throws Exception {
@@ -119,6 +120,7 @@ public class Base64DecoderTest {
 
     /**
      * Test of decode method, of class Base64Decoder.
+     * @throws Exception
      */
     @Test
     public void testDecode_InputStream_int() throws Exception {
