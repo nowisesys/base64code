@@ -17,16 +17,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * 
  * Send questions, suggestions, bugs or comments to: 
- * Anders Lövgren (lespaul@algonet.se or anders.lovgren@bmc.uu.se)
+ * Anders Lövgren (andlov@nowise.se)
  * 
- * For more info: http://it.bmc.uu.se/andlov/proj/batchelor/
+ * For more info: https://github.com/nowisesys/base64code/
  */
 
 /*
  * Base64Encoder.java
  *
  * Created: Apr 27, 2009, 11:51:12 PM
- * Author:  Anders Lövgren (QNET/BMC CompDept)
+ * Author:  Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University)
  */
 package se.nowise.codecs.base64;
 
@@ -54,7 +54,7 @@ import java.io.IOException;
  * and RFC 2045 (section 6.8). It has verified against other Base64 implementations
  * like the base64(1) command from the GNU coreutils package.</p>
  *
- * @author Anders Lövgren (QNET/BMC CompDept)
+ * @author Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University)
  */
 public final class Base64Encoder {
 

@@ -17,16 +17,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * 
  * Send questions, suggestions, bugs or comments to: 
- * Anders Lövgren (lespaul@algonet.se or anders.lovgren@bmc.uu.se)
+ * Anders Lövgren (andlov@nowise.se)
  * 
- * For more info: http://it.bmc.uu.se/andlov/proj/batchelor/
+ * For more info: https://github.com/nowisesys/base64code/
  */
 
 /*
  * Base64Application.java
  *
  * Created: May 3, 2009, 11:07:14 PM
- * Author:  Anders Lövgren (QNET/BMC CompDept)
+ * Author:  Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University)
  */
 package se.nowise.codecs.base64;
 
@@ -42,7 +42,7 @@ import java.io.IOException;
  * Sample main class that utilize the Base64Encode/Base64Decode classes to
  * provide an Base 64 encoding/decoding application.
  *
- * @author Anders Lövgren (QNET/BMC CompDept)
+ * @author Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University)
  */
 public class Base64Application {
 

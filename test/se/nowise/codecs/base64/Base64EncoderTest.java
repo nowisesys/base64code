@@ -17,9 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * 
  * Send questions, suggestions, bugs or comments to: 
- * Anders Lövgren (lespaul@algonet.se or anders.lovgren@bmc.uu.se)
+ * Anders Lövgren (andlov@nowise.se)
  * 
- * For more info: http://it.bmc.uu.se/andlov/proj/batchelor/
+ * For more info: https://github.com/nowisesys/base64code/
  */
 
 package se.nowise.codecs.base64;
@@ -34,7 +34,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Anders Lövgren (QNET/BMC CompDept)
+ * @author Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University)
  */
 public class Base64EncoderTest {
 
