@@ -60,9 +60,9 @@ public final class Base64Encoder {
 
     private byte[] result;   // Output buffer.
     private byte[] buffer;   // Input buffer.
-    private final static int[] valid = {0, 2, 3, 4, 4};  // valid bytes map.
-    private final static byte[] lookup = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".getBytes();
-    private final static int[] mask = {0xfc0000, 0x03f000, 0x000fc0, 0x00003f};
+    private final static int[] VALID = {0, 2, 3, 4, 4};  // Valid bytes map.
+    private final static byte[] LOOKUP = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".getBytes();
+    private final static int[] MASK = {0xfc0000, 0x03f000, 0x000fc0, 0x00003f};
     /**
      * Default buffer size.
      */
@@ -182,7 +182,7 @@ public final class Base64Encoder {
             buffer = new byte[size];
         }
 
-        int read = 0;
+        int read;
         while (size > 0) {
             read = stream.read(buffer, buffer.length - size, size);
             if (read == -1) {
@@ -242,12 +242,12 @@ public final class Base64Encoder {
                 }
                 ++len;
             }
-            int split = valid[len];
+            int split = VALID[len];
             for (int j = 0; j < 4; ++j) {
                 int index = i * 4 + j;
                 int shift = 18 - j * 6;
                 if (j < split) {
-                    result[index] = lookup[(ch & mask[j]) >> shift];
+                    result[index] = LOOKUP[(ch & MASK[j]) >> shift];
                 } else {
                     result[index] = '=';
                 }

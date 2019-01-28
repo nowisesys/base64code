@@ -31,8 +31,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import se.nowise.codecs.base64.Base64Decoder;
-
 /**
  *
  * @author Anders Lövgren (QNET/BMC CompDept)
@@ -40,8 +38,8 @@ import se.nowise.codecs.base64.Base64Decoder;
 public class Base64DecoderTest {
 
     Base64Decoder decoder;
-    final static String decoded = "Hello, world!";
-    final static String encoded = "SGVsbG8sIHdvcmxkIQ==";
+    final static String DECODED = "Hello, world!";
+    final static String ENCODED = "SGVsbG8sIHdvcmxkIQ==";
 
     public Base64DecoderTest() {
         decoder = new Base64Decoder();
@@ -100,10 +98,10 @@ public class Base64DecoderTest {
     @Test
     public void testDecode_String() {
         System.out.println("** Base64DecoderTest -> decode(String)");
-        byte[] bytes = decoder.decode(encoded);
+        byte[] bytes = decoder.decode(ENCODED);
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, decoded);
+        assertEquals(result, DECODED);
     }
 
     /**
@@ -112,11 +110,11 @@ public class Base64DecoderTest {
     @Test
     public void testDecode_InputStream() throws Exception {
         System.out.println("** Base64DecoderTest -> decode(InputStream)");
-        ByteArrayInputStream stream = new ByteArrayInputStream(encoded.getBytes());
+        ByteArrayInputStream stream = new ByteArrayInputStream(ENCODED.getBytes());
         byte[] bytes = decoder.decode(stream);
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, decoded);
+        assertEquals(result, DECODED);
     }
 
     /**
@@ -125,11 +123,11 @@ public class Base64DecoderTest {
     @Test
     public void testDecode_InputStream_int() throws Exception {
         System.out.println("** Base64DecoderTest -> decode(InputStream, int)");
-        ByteArrayInputStream stream = new ByteArrayInputStream(encoded.getBytes());
+        ByteArrayInputStream stream = new ByteArrayInputStream(ENCODED.getBytes());
         byte[] bytes = decoder.decode(stream, 512);
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, decoded);
+        assertEquals(result, DECODED);
     }
 
     /**
@@ -138,10 +136,10 @@ public class Base64DecoderTest {
     @Test
     public void testDecode_byteArr() {
         System.out.println("** Base64DecoderTest -> decode(byte[])");
-        byte[] bytes = decoder.decode(encoded.getBytes());
+        byte[] bytes = decoder.decode(ENCODED.getBytes());
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, decoded);
+        assertEquals(result, DECODED);
     }
 
     /**
@@ -150,9 +148,9 @@ public class Base64DecoderTest {
     @Test
     public void testDecode_charArr() {
         System.out.println("** Base64DecoderTest -> decode(char[])");
-        byte[] bytes = decoder.decode(encoded.toCharArray());
+        byte[] bytes = decoder.decode(ENCODED.toCharArray());
         String result = new String(bytes);
         System.out.println("Result: '" + result + "'");
-        assertEquals(result, decoded);
+        assertEquals(result, DECODED);
     }
 }

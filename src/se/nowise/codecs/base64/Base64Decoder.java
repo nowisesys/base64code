@@ -60,9 +60,9 @@ public class Base64Decoder {
 
     private byte[] result;   // Output buffer.
     private byte[] buffer;   // Input buffer.
-    private final static int[] valid = {0, 1, 1, 2, 4};  // valid bytes map.
-    private final static byte[] lookup;                  // lookup table.
-    private final static int[] mask = {0xff0000, 0x00ff00, 0x0000ff};
+    private final static int[] VALID = {0, 1, 1, 2, 4};  // Valid bytes map.
+    private final static byte[] LOOKUP;                  // Lookup table.
+    private final static int[] MASK = {0xff0000, 0x00ff00, 0x0000ff};
     /**
      * Default buffer size.
      */
@@ -74,18 +74,18 @@ public class Base64Decoder {
         //
         // Initilize the ASCII to Base64 index lookup table:
         //
-        lookup = new byte[255];
+        LOOKUP = new byte[255];
         for (int i = 0; i < 26; ++i) {
-            lookup[i + 65] = (byte) (i);        // 'A' - 'Z'
+            LOOKUP[i + 65] = (byte) (i);        // 'A' - 'Z'
         }
         for (int i = 0; i < 26; ++i) {
-            lookup[i + 97] = (byte) (i + 26);   // 'a' - 'z'
+            LOOKUP[i + 97] = (byte) (i + 26);   // 'a' - 'z'
         }
         for (int i = 0; i < 10; ++i) {
-            lookup[i + 48] = (byte) (i + 52);   // '0' - '9'
+            LOOKUP[i + 48] = (byte) (i + 52);   // '0' - '9'
         }
-        lookup[43] = (byte) 62;                 // '+'
-        lookup[47] = (byte) 63;                 // '/'
+        LOOKUP[43] = (byte) 62;                 // '+'
+        LOOKUP[47] = (byte) 63;                 // '/'
     }
 
     /**
@@ -200,7 +200,7 @@ public class Base64Decoder {
             buffer = new byte[size];
         }
 
-        int read = 0;
+        int read;
         while (size > 0) {
             read = stream.read(buffer, buffer.length - size, size);
             if (read == -1) {
@@ -255,13 +255,13 @@ public class Base64Decoder {
                 int index = 4 * i + j;
                 int shift = 18 - j * 6;
                 if (buffer[index] != -1 && buffer[index] != '=') {
-                    ch |= lookup[buffer[index]] << shift;
+                    ch |= LOOKUP[buffer[index]] << shift;
                 } else {
                     break;
                 }
                 ++len;
             }
-            int split = valid[len];
+            int split = VALID[len];
             for (int j = 0; j < 3; ++j) {
                 int index = 3 * i + j;
                 int shift = 16 - j * 8;
@@ -269,7 +269,7 @@ public class Base64Decoder {
                     break;
                 }
                 if (j < split) {
-                    result[index] = (byte) ((ch & mask[j]) >> shift);
+                    result[index] = (byte) ((ch & MASK[j]) >> shift);
                 }
             }
         }
